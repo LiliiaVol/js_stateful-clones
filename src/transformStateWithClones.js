@@ -33,7 +33,7 @@ function transformStateWithClones(state, actions) {
         break;
 
       default:
-        return 'error, try again with other arguments';
+        return ['error, try again with other arguments'];
     }
 
     history.push({ ...stateCopy });
