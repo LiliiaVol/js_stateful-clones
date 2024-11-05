@@ -15,9 +15,7 @@ function transformStateWithClones(state, actions) {
 
     switch (type) {
       case 'addProperties':
-        for (const key in extraData) {
-          stateCopy[key] = extraData[key];
-        }
+        Object.assign(stateCopy, extraData);
         break;
 
       case 'removeProperties':
@@ -33,7 +31,7 @@ function transformStateWithClones(state, actions) {
         break;
 
       default:
-        return ['error, try again with other arguments'];
+        throw new Error(`Invalid action type: ${action.type}`);
     }
 
     history.push({ ...stateCopy });
